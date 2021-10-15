@@ -7,11 +7,14 @@ const Home: NextPage = () => {
   const [userInput, setUserInput] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
 
+  // blabla
+  const [resultedString, setResultedString] = useState<string>("")
+  const [lineNumber, setLineNumber] = useState<number>(2)
+  const [lineWidth, setLineWidth] = useState<number>(0)
+
   const startConversion = () => {
     setLoading(true)
-
-    TextConverterToCasio(userInput)
-
+    TextConverterToCasio(userInput, resultedString, setResultedString, lineNumber, setLineNumber, lineWidth, setLineWidth)
     setLoading(false)
   }
 
