@@ -1,12 +1,35 @@
-import React, { FC } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
 
 // utils
 import { toggleTheme } from "../utils/theme"
 
-interface IThemeSwitcher {}
+const ThemeSwitcher = () => {
+  const [theme, setTheme] = useState<string>("")
 
-const ThemeSwitcher: FC<IThemeSwitcher> = (props) => <Button onClick={toggleTheme}>Click here</Button>
+  const getTheme = () => {
+    if (String(localStorage.getItem("mtro-theme")) == "false") {
+      setTheme("light")
+    } else {
+      setTheme("dark")
+    }
+  }
+
+  useEffect(() => {
+    getTheme()
+  })
+
+  const handleClick = () => {
+    setTheme((prev: string) => (prev === "light" ? "dark" : "light"))
+    toggleTheme()
+  }
+
+  return <>{theme === "dark" ? <FontAwesomeIcon onClick={handleClick} icon={faMoon} /> : <FontAwesomeIcon onClick={handleClick} icon={faSun} />}</>
+}
 
 const Button = styled.button`
   /* TODO: THEME IS INLINE WITH NAVBAR AT START BUT BECOME FLOATING AFTER SCROLL  */

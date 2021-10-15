@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Navbar from "./Navbar"
 import styled from "styled-components"
+import ActionsBar from "./ActionsBar"
 
 interface ILayout {
   children: JSX.Element
@@ -8,15 +9,20 @@ interface ILayout {
 
 const Layout: FC<ILayout> = ({ children }) => (
   <AppContainer>
-    <header>
+    <HeaderContainer>
       <Navbar />
-    </header>
+      <ActionsBar />
+    </HeaderContainer>
     {children}
     <footer></footer>
   </AppContainer>
 )
 
 const AppContainer = styled.div`
+  display: flex;
+`
+
+const HeaderContainer = styled.header`
   display: flex;
 `
 
