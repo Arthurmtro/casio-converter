@@ -1,19 +1,20 @@
 import { lineBreak } from "./constantCmds"
+import { IConvertedObj } from "./textConverter"
 
-export const checkUserInput = (userInput: string, setResultedString: any, readIndex: number, setLineWidth: any, lineNumber: number, setLineNumber: any) => {
+export const checkUserInput = (userInput: string, readIndex: number, convertedObj: IConvertedObj) => {
   switch (userInput[readIndex]) {
     case '"': {
-      setResultedString((prev: string) => prev + "'")
-      setLineWidth((prev: number) => prev + 1)
+      convertedObj.resultedString += "'"
+      convertedObj.lineWidth += 1
       break
     }
     case "\n": {
-      lineBreak(setResultedString, lineNumber, setLineNumber, setLineWidth)
+      lineBreak(convertedObj)
       break
     }
     default: {
-      setResultedString((prev: string) => prev + userInput[readIndex])
-      setLineWidth((prev: number) => prev + 1)
+      convertedObj.resultedString += userInput[readIndex]
+      convertedObj.lineWidth += 1
       break
     }
   }

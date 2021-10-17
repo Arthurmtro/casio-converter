@@ -1,31 +1,39 @@
-import { useState } from "react"
 import { checkLineInfos } from "./checkFunctions"
 import { checkUserInput } from "./checkUserInput"
 import { addProgramEnd, initResult } from "./constantCmds"
 
-// TODO: UPDATE CORE FUNCTION WITH STATE & CONTEXT
+export interface IConvertedObj {
+  resultedString: string
+  lineNumber: number
+  lineWidth: number
+}
 
-export const TextConverterToCasio = (userInput: string, resultedString: string, setResultedString: any, lineNumber: number, setLineNumber: any, lineWidth: number, setLineWidth: any) => {
+export const TextConverterToCasio = async (userInput: string) => {
   console.clear()
+  console.group()
 
   userInput += "\n" // init userInput by adding a line break
 
-  initResult(setResultedString)
+  const convertedObj: IConvertedObj = {
+    resultedString: "",
+    lineNumber: 2,
+    lineWidth: 0,
+  }
+
+  initResult(convertedObj)
 
   for (let readIndex = 0; readIndex < userInput.length; readIndex++) {
     // Check for line width to know is he had to line breack or to instantiate new Text
-    checkLineInfos(setResultedString, lineNumber, setLineNumber, lineWidth)
+    checkLineInfos(convertedObj)
 
     // Chech user input & convert encoding
-    checkUserInput(userInput, setResultedString, readIndex, setLineWidth, lineNumber, setLineNumber)
+    checkUserInput(userInput, readIndex, convertedObj)
   }
 
   // Add end basic configuration to the resultedString
-  addProgramEnd(setResultedString)
+  addProgramEnd(convertedObj)
 
   console.log("userInput :>> ", userInput)
-  console.log("resultedString :>> ", resultedString.trim())
-
-  setLineNumber(2)
-  setLineWidth(0)
+  console.log("resultedString :>> ", convertedObj.resultedString.trim())
+  console.groupEnd()
 }

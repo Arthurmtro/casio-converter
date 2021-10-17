@@ -7,20 +7,16 @@ import ThemeSwitcher from "../ThemeSwitcher"
 
 export default function Navbar() {
   const elements = [
-    { text: "category", icon: faStream },
     { text: "search", icon: faSearch },
-    { text: "sign ups", icon: faUser },
+    { text: "category", icon: faStream },
     { text: "menu", icon: faTh },
-    { text: "calendar", icon: faCalendar },
   ]
 
   return (
-    <>
-      <NavbarElement>
-        <NavbarContainer>
-          <AppLogo>
-            <Image width={128} height={128} src="/assets/images/spotify.png" alt="alt placeholder" />
-          </AppLogo>
+    <NavbarElement>
+      <NavbarContainer>
+        <div>
+          <Image width={64} height={64} src="/assets/images/spotify.png" alt="alt placeholder" />
 
           {elements.map(({ text, icon }, idx) => (
             <NavElement key={idx}>
@@ -31,15 +27,15 @@ export default function Navbar() {
               <Text>{text}</Text>
             </NavElement>
           ))}
-          <ThemeSwitcher />
-        </NavbarContainer>
-      </NavbarElement>
-    </>
+        </div>
+        <ThemeSwitcher />
+      </NavbarContainer>
+    </NavbarElement>
   )
 }
 
 const NavbarElement = styled.nav`
-  width: 15rem;
+  width: 9rem;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -54,6 +50,7 @@ const NavbarContainer = styled.div`
   padding: 10px 8px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-bottom-right-radius: 0.55rem;
 `
 
@@ -85,8 +82,4 @@ const IconBox = styled.div`
 
 const Text = styled.span`
   margin: 0 10px;
-`
-const AppLogo = styled.span`
-  margin: 0 auto;
-  width: 75px;
 `

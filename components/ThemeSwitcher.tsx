@@ -28,19 +28,23 @@ const ThemeSwitcher = () => {
     toggleTheme()
   }
 
-  return <>{theme === "dark" ? <FontAwesomeIcon onClick={handleClick} icon={faMoon} /> : <FontAwesomeIcon onClick={handleClick} icon={faSun} />}</>
+  return <Button>{theme === "dark" ? <FontAwesomeIcon onClick={handleClick} icon={faMoon} /> : <FontAwesomeIcon onClick={handleClick} icon={faSun} />}</Button>
 }
 
 const Button = styled.button`
-  /* TODO: THEME IS INLINE WITH NAVBAR AT START BUT BECOME FLOATING AFTER SCROLL  */
-
-  padding: 8px 16px;
+  width: 50px;
+  height: 50px;
+  padding: 12px;
+  border-radius: 100%;
+  border: 0;
   color: var(--theme-primary);
   background: var(--theme-background-primary);
-  outline: none;
-  border-radius: 4px;
-  border: 1px solid var(--theme-primary);
   cursor: pointer;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export default ThemeSwitcher

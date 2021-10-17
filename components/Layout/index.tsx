@@ -9,11 +9,11 @@ interface ILayout {
 
 const Layout: FC<ILayout> = ({ children }) => (
   <AppContainer>
-    <HeaderContainer>
-      <Navbar />
+    <Navbar />
+    <Container>
       <ActionsBar />
-    </HeaderContainer>
-    {children}
+      {children}
+    </Container>
     <footer></footer>
   </AppContainer>
 )
@@ -22,8 +22,9 @@ const AppContainer = styled.div`
   display: flex;
 `
 
-const HeaderContainer = styled.header`
+const Container = styled.header`
   display: flex;
+  flex-direction: column;
 `
 
 export default Layout
