@@ -1,7 +1,7 @@
 import { lineBreak } from "./constantCmds"
 import { IConvertedObj } from "./textConverter"
 
-export const checkUserInput = (userInput: string, readIndex: number, convertedObj: IConvertedObj) => {
+export function checkUserInput(userInput: string, readIndex: number, convertedObj: IConvertedObj) {
   switch (userInput[readIndex]) {
     case '"': {
       convertedObj.resultedString += "'"

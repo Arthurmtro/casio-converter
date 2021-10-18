@@ -1,12 +1,33 @@
-import React from "react"
+import { useContext } from "react"
 import styled from "styled-components"
+
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlay } from "@fortawesome/free-solid-svg-icons"
+
+// Hook
+import { UserInput } from "../../hooks/UserInputContext"
+
+// Lib
+import { TextConverterToCasio } from "../../lib/textConverter"
+
+// Component
 import Button from "../Button"
 
 export default function ActionsBar() {
+  const { userInput } = useContext(UserInput)
+
+  const startConversion = () => {
+    // setLoading(true)
+    TextConverterToCasio(userInput)
+    // setLoading(false)
+  }
+
   return (
     <ActionsContainer>
       <ActionsElements>
-        <Button>text</Button>
+        <Button action={startConversion}>Run</Button>
+        {/* <FontAwesomeIcon icon={faPlay} /> */}
       </ActionsElements>
     </ActionsContainer>
   )

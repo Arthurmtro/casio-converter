@@ -12,14 +12,12 @@ export function lineBreak(convertedObj: IConvertedObj) {
   if (!lineNumberLimit(convertedObj, MAX_LINE_NUMBER - 6)) {
     convertedObj.resultedString += '"Ù\n'
   }
-  console.log("linebreak")
   convertedObj.lineNumber += 6
   convertedObj.lineWidth = 0
 }
 
 export function newTextLine(convertedObj: IConvertedObj) {
   convertedObj.resultedString += `Text ${convertedObj.lineNumber},2,"`
-  console.log(convertedObj)
 }
 
 export function paragraphTextEnd(convertedObj: IConvertedObj) {

@@ -10,7 +10,7 @@ export interface IConvertedObj {
 
 export const TextConverterToCasio = async (userInput: string) => {
   console.clear()
-  console.group()
+  console.group("Converter")
 
   userInput += "\n" // init userInput by adding a line break
 
@@ -24,7 +24,7 @@ export const TextConverterToCasio = async (userInput: string) => {
 
   for (let readIndex = 0; readIndex < userInput.length; readIndex++) {
     // Check for line width to know is he had to line breack or to instantiate new Text
-    checkLineInfos(convertedObj)
+    checkLineInfos(userInput, readIndex, convertedObj)
 
     // Chech user input & convert encoding
     checkUserInput(userInput, readIndex, convertedObj)
@@ -33,7 +33,7 @@ export const TextConverterToCasio = async (userInput: string) => {
   // Add end basic configuration to the resultedString
   addProgramEnd(convertedObj)
 
-  console.log("userInput :>> ", userInput)
-  console.log("resultedString :>> ", convertedObj.resultedString.trim())
+  // console.log("userInput :>> ", userInput)
+  console.log(convertedObj.resultedString.trim())
   console.groupEnd()
 }

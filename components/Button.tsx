@@ -1,9 +1,9 @@
-import React, { FC } from "react"
+import React from "react"
 import styled from "styled-components"
 
 interface IButton {
   children: JSX.Element | string
-  action?: () => {}
+  action?: () => void
 }
 
 export default function Button({ children, action = undefined }: IButton) {
