@@ -17,8 +17,8 @@ export const GlobalStyle = createGlobalStyle`
     --theme-link-primary: #df9629;
 
     // Global
-    --font-size-title: calc(2.5rem);
-    --font-size-medium: calc(1.1875rem);
+    --font-size-title: calc(3rem);
+    --font-size-medium: calc(1.4rem);
   }
   
   html.light {
@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.4;
     text-decoration: none;
     box-sizing: border-box;
     scroll-behavior: smooth;

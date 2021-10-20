@@ -1,10 +1,15 @@
 import type { NextPage } from "next"
-import Head from "next/head"
 import { useContext } from "react"
+import dynamic from "next/dynamic"
+import Head from "next/head"
 import styled from "styled-components"
 
 // Hook
 import { UserInput } from "../hooks/UserInputContext"
+
+const TextEditor = dynamic(import("../components/TextEditor"), {
+  ssr: false,
+})
 
 const Home: NextPage = () => {
   const { userInput, setUserInput } = useContext(UserInput)
@@ -19,8 +24,9 @@ const Home: NextPage = () => {
 
       <Main>
         <InputZone>
-          <input type="text" placeholder="Title" />
-          <textarea rows={15} cols={30} value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Enter text here"></textarea>
+          <TitleInput type="text" placeholder="Title" />
+          <TextEditor onChange={setUserInput} />
+          {/* <InputArea value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Enter text here" /> */}
         </InputZone>
       </Main>
     </>
@@ -29,11 +35,35 @@ const Home: NextPage = () => {
 
 const Main = styled.main`
   display: flex;
+  height: 100%;
 `
 
 const InputZone = styled.section`
-  display: flex;
+  background-color: var(--theme-background-primary);
+  color: var(--theme-primary);
   flex-direction: column;
+  display: flex;
+  width: 100%;
+`
+
+const TitleInput = styled.input`
+  background-color: var(--theme-background-primary);
+  font-size: var(--font-size-title);
+  color: var(--theme-primary);
+  border: none;
+  width: 100%;
+  outline: 0;
+`
+
+const InputArea = styled.textarea`
+  background-color: var(--theme-background-primary);
+  font-size: var(--font-size-medium);
+  color: var(--theme-primary);
+  height: 100%;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: 0;
 `
 
 export default Home
