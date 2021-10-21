@@ -44,9 +44,9 @@ const NavbarElement = styled.nav`
 `
 
 const NavbarContainer = styled.div`
+  background-color: var(--theme-background-secondary);
   width: 100%;
   height: 100%;
-  background-color: var(--theme-background-secondary);
   padding: 10px 8px;
   display: flex;
   flex-direction: column;
@@ -82,4 +82,5 @@ const IconBox = styled.div`
 
 const Text = styled.span`
   margin: 0 10px;
+  font-family: var(--font-family);
 `

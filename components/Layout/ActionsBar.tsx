@@ -15,18 +15,29 @@ import { TextConverterToCasio } from "../../lib/textConverter"
 import Button from "../Button"
 
 export default function ActionsBar() {
-  const { userInput } = useContext(UserInput)
+  const { userInput, setUserInput } = useContext(UserInput)
+  const startConversion = () => TextConverterToCasio(userInput)
 
-  const startConversion = () => {
-    // setLoading(true)
-    TextConverterToCasio(userInput)
-    // setLoading(false)
+  const addHeader = (level: number) => {
+    //TODO: Get cursor position to ajust position
+    switch (level) {
+      case 1:
+        userInput.length ? setUserInput(userInput + "\n# Titre\n") : setUserInput("# Titre\n")
+        break
+      case 2:
+        userInput.length ? setUserInput(userInput + "\n## Titre\n") : setUserInput("## Titre\n")
+        break
+      default:
+        userInput.length ? setUserInput(userInput + "\n# Titre\n") : setUserInput("# Titre\n")
+    }
   }
 
   return (
     <ActionsContainer>
       <ActionsElements>
         <Button action={startConversion}>Run</Button>
+        <Button action={() => addHeader(1)}>Header 1</Button>
+        <Button action={() => addHeader(2)}>Header 2</Button>
         {/* <FontAwesomeIcon icon={faPlay} /> */}
       </ActionsElements>
     </ActionsContainer>

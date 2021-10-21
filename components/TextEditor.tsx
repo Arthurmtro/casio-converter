@@ -1,13 +1,21 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import AceEditor from "react-ace"
-import styled from "styled-components"
 
 import brace from "brace"
 import "brace/mode/markdown"
 import "brace/theme/dracula"
 import "brace/theme/xcode"
 
-const TextEditor = ({ onChange }: { onChange: (props: string) => "" }) => {
+// Hook
+import { UserInput } from "../hooks/UserInputContext"
+
+/*
+TODO: 
+  * Separate all Chapters(titles) with content. ?? regex ??
+*/
+
+const TextEditor = () => {
+  const { userInput, setUserInput } = useContext(UserInput)
   const [theme, setTheme] = useState<string>("")
 
   const getTheme = () => {
@@ -18,24 +26,9 @@ const TextEditor = ({ onChange }: { onChange: (props: string) => "" }) => {
     }
   }
 
-  useEffect(() => {
-    getTheme()
-  })
+  useEffect(() => getTheme())
 
-  return (
-    <AceEditor
-      mode="markdown"
-      theme={`${theme === "light" ? "xcode" : "dracula"}`}
-      onChange={onChange}
-      name="AceEditor"
-      editorProps={{
-        $blockScrolling: true,
-      }}
-      fontSize={23}
-      height="90%"
-      width="100%"
-    />
-  )
+  return <AceEditor mode="markdown" value={userInput} theme={`${theme === "light" ? "xcode" : "dracula"}`} onChange={setUserInput} name="AceEditor" editorProps={{ $blockScrolling: true }} fontSize={23} height="90%" width="100%" />
 }
 
 export default TextEditor

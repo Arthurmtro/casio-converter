@@ -17,8 +17,9 @@ export const GlobalStyle = createGlobalStyle`
     --theme-link-primary: #df9629;
 
     // Global
-    --font-size-title: calc(3rem);
+    --font-size-title: calc(2.5rem);
     --font-size-medium: calc(1.4rem);
+    --font-family: Wotfard, Futura, -apple-system, sans-serif;
   }
   
   html.light {
@@ -45,8 +46,12 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: Wotfard, Futura, -apple-system, sans-serif;
+    font-family: monospace, Futura, -apple-system, sans-serif;
     color: var(--theme-primary);
+
+    /*{
+      font-family:monospace
+    }  */
   }
 
   a {

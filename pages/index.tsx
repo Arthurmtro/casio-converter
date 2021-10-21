@@ -1,19 +1,13 @@
 import type { NextPage } from "next"
-import { useContext } from "react"
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import styled from "styled-components"
-
-// Hook
-import { UserInput } from "../hooks/UserInputContext"
 
 const TextEditor = dynamic(import("../components/TextEditor"), {
   ssr: false,
 })
 
 const Home: NextPage = () => {
-  const { userInput, setUserInput } = useContext(UserInput)
-
   return (
     <>
       <Head>
@@ -25,7 +19,7 @@ const Home: NextPage = () => {
       <Main>
         <InputZone>
           <TitleInput type="text" placeholder="Title" />
-          <TextEditor onChange={setUserInput} />
+          <TextEditor />
           {/* <InputArea value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Enter text here" /> */}
         </InputZone>
       </Main>
